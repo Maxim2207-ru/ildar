@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Я Ильдар (замир)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 10px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #fff;
+            font-family: "Nunito", sans-serif;
+            color: #5b5766;
+            font-size: 1.8rem;
+            line-height: 1.5;
+            transition: background-color 0.3s ease, color 0.2s ease;
+        }
+
+        body.dark {
+            background-color: #0f0f12;
+            color: #cbcbe0;
+        }
+
+        body.dark h1, 
+        body.dark h2, 
+        body.dark h3 {
+            color: #c084fc;
+        }
+
+        body.dark .top-header_text,
+        body.dark .top-header_phone {
+            color: #a5a5c0;
+        }
+
+        body.dark .divider {
+            border-bottom-color: #2a2a35;
+        }
+
+        body.dark .header_menu_link {
+            color: #b7b7d0;
+        }
+
+        body.dark .header_menu_link_active {
+            color: #c084fc;
+        }
+
+        body.dark .infoblock {
+            background-color: #18181f;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        body.dark .infoblock_text,
+        body.dark .article_text,
+        body.dark .stage_text {
+            color: #b9b9d4;
+        }
+
+        body.dark .btn-light {
+            border-color: #c084fc;
+            color: #c084fc;
+        }
+
+        body.dark .link {
+            color: #c084fc;
+        }
+
+        body.dark .header_submenu {
+            background-color: #1f1f2a;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        body.dark .stage_title {
+            color: #f0e6ff;
+        }
+
+        body.dark .infoblock_title {
+            color: #e2d6ff;
+        }
+
+        body.dark .infoblock .fa-solid {
+            color: #c084fc;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h1, h2, h3 {
+            font-family: "Poppins", sans-serif;
+            font-weight: bold;
+            color: #554d89;
+        }
+
+        .btn {
+            border: none;
+            text-decoration: none;
+            height: 40px;
+            border-radius: 40px;
+            padding: 0 1.5rem;
+            font-family: "Poppins", sans-serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .btn-light {
+            background-color: transparent;
+            border: solid 1px #6852ed;
+            font-size: 1.4rem;
+            color: #6852ed;
+        }
+
+        .btn-light:hover {
+            background-color: #6852ed20;
+            transform: scale(0.97);
+        }
+
+        .btn-dark {
+            color: #fff;
+            background-image: linear-gradient(57deg, #6852ed 78%, #ba43fc 137%);
+            padding: 1.3rem 3rem;
+            height: auto;
+        }
+
+        .btn-dark:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(104, 82, 237, 0.4);
+        }
+
+        .link {
+            border: none;
+            text-decoration: none;
+            color: #554d89;
+            font-family: "Poppins", sans-serif;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .link:hover {
+            text-shadow: 0 0 1px #554d89;
+            transform: translateX(4px);
+            display: inline-block;
+        }
+
+        .link-arrow::after {
+            content: '\f178';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-left: 1rem;
+        }
+
+        .divider {
+            border: none;
+            border-bottom: 2px solid rgba(225, 228, 237, 0.8);
+        }
+
+        .wrapper {
+            width: 1146px;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0 1.5rem;
+            font-size: 1.6rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 2.4rem;
+            cursor: pointer;
+            color: #6852ed;
+            transition: transform 0.2s;
+            margin-left: 1rem;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(15deg);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .header-navbar {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .header_logo {
+            display: block;
+            margin-right: 3rem;
+        }
+
+        .header_logo img {
+            max-width: 60px;
+            transition: transform 0.3s;
+        }
+
+        .header_logo img:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        .header_menu {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .header_menu-item {
+            margin-right: 2.5rem;
+            position: relative;
+            padding: 1.2rem 0;
+        }
+
+        .header_submenu {
+            display: none;
+            position: absolute;
+            top: 4.4rem;
+            left: -2rem;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background-color: #fff;
+            z-index: 100;
+            min-width: 160px;
+        }
+
+        .header_submenu .header_menu-item {
+            padding: 0.5rem 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .header_menu-item:hover .header_submenu {
+            display: block;
+            animation: fadeUp 0.2s ease;
+        }
+
+        .header_menu_link {
+            color: #5b5766;
+            font-size: 1.6rem;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .header_menu_link:hover {
+            color: #554d89;
+            text-shadow: 0 0 1px #554d89;
+        }
+
+        .header_menu_link_active {
+            color: #554d89;
+            font-weight: 700;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .stage {
+            margin-top: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .stage_content {
+            flex: 1;
+            animation: slideInLeft 0.6s ease;
+        }
+
+        .stage_title {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .stage_text {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stage img {
+            max-width: 280px;
+            border-radius: 30px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+            transition: 0.3s;
+            animation: bounceGlow 3s infinite;
+        }
+
+        .stage img:hover {
+            transform: scale(1.02) rotate(1deg);
+        }
+
+        .stage_action {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .btn-bottom {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 70px;
+            background-color: #6852ed;
+            border-radius: 50%;
+            display: flex;
+            color: #fff;
+            text-decoration: none;
+            animation: floatArrow 1.5s infinite;
+        }
+
+        .btn-bottom i {
+            margin: auto;
+            font-size: 3rem;
+        }
+
+        .features {
+            margin-top: 10rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .infoblock {
+            flex: 1;
+            min-width: 250px;
+            border-radius: 24px;
+            box-shadow: 0 0 20px 0 #e1e4ed;
+            background-color: #fff;
+            padding: 3rem 2rem;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            animation: fadeUp 0.5s ease;
+        }
+
+        .infoblock:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 30px rgba(104, 82, 237, 0.5);
+            background-image: linear-gradient(135deg, #6852ed 0%, #ba43fc 100%);
+        }
+
+        .infoblock .fa-solid {
+            color: #6852ed;
+            font-size: 3.6rem;
+            margin-bottom: 2rem;
+            transition: 0.2s;
+        }
+
+        .infoblock_title {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .infoblock_text {
+            color: #716c80;
+        }
+
+        .infoblock_link {
+            display: none;
+            margin-top: 2rem;
+            color: white !important;
+        }
+
+        .infoblock:hover .fa-solid {
+            display: none;
+        }
+
+        .infoblock:hover .infoblock_title {
+            color: #fff;
+        }
+
+        .infoblock:hover .infoblock_text {
+            color: #fff;
+        }
+
+        .infoblock:hover .infoblock_link {
+            display: inline-block;
+            animation: shake 0.4s ease;
+        }
+
+        .article {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 7rem;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .article_reverse {
+            flex-direction: row-reverse;
+        }
+
+        .article_img, .article_content {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .article_img {
+            text-align: center;
+        }
+
+        .article_img img {
+            max-width: 100%;
+            border-radius: 40px;
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .article_img img:hover {
+            transform: scale(1.02) rotate(-1deg);
+            filter: drop-shadow(0 0 12px #ba43fc80);
+        }
+
+        .article_content {
+            padding-left: 2rem;
+        }
+
+        .article_title {
+            font-size: 2.8rem;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+        }
+
+        .article_text {
+            color: #716c80;
+            margin-bottom: 3rem;
+        }
+
+        .article_action {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @keyframes floatArrow {
+            0% { transform: translateX(-50%) translateY(0px); }
+            50% { transform: translateX(-50%) translateY(10px); }
+            100% { transform: translateX(-50%) translateY(0px); }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceGlow {
+            0% { filter: drop-shadow(0 0 2px #6852ed); }
+            50% { filter: drop-shadow(0 0 15px #ba43fc); }
+            100% { filter: drop-shadow(0 0 2px #6852ed); }
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
+            100% { transform: translateX(0); }
+        }
+
+        @media (max-width: 860px) {
+            html {
+                font-size: 9px;
+            }
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .header-navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .header_menu {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            .header_menu-item {
+                margin-right: 1rem;
+            }
+            .stage {
+                flex-direction: column;
+                text-align: center;
+            }
+            .stage_content {
+                text-align: center;
+            }
+            .stage_action {
+                justify-content: center;
+            }
+            .stage img {
+                max-width: 220px;
+            }
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            .infoblock {
+                width: 100%;
+                max-width: 380px;
+            }
+            .article {
+                flex-direction: column;
+                text-align: center;
+            }
+            .article_reverse {
+                flex-direction: column;
+            }
+            .article_content {
+                padding-left: 0;
+                text-align: center;
+            }
+            .article_title {
+                width: auto;
+                font-size: 2.4rem;
+            }
+            .article_action {
+                justify-content: center;
+            }
+            .btn-bottom {
+                width: 55px;
+                height: 55px;
+                bottom: -35px;
+            }
+            .top-header {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-actions {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stage_title {
+                font-size: 3rem;
+            }
+            .stage_text {
+                font-size: 1.6rem;
+            }
+            .btn-dark {
+                padding: 1rem 2rem;
+            }
+            .header_menu-item {
+                margin-right: 1rem;
+            }
+        }
+
+        .btn-dark, .btn-light {
+            cursor: pointer;
+        }
+
+        body.dark .btn-bottom {
+            background: #c084fc;
+        }
+
+        [data-tooltip] {
+            position: relative;
+            cursor: help;
+        }
+        [data-tooltip]:before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f1f2a;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            white-space: nowrap;
+            display: none;
+            z-index: 99;
+        }
+        [data-tooltip]:hover:before {
+            display: block;
+        }
+
+        .mem-bounce {
+            transition: 0.1s linear;
+        }
+        .mem-bounce:active {
+            transform: scale(0.96);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="top-header">
+            <div class="top-header_text">Красивый мальчик для красивых девочек альтушек</div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <a href="tel:+79374479125" class="top-header_phone">+7 937 447 9125</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Тёмная тема">🌙</button>
+            </div>
+        </div>
+    </div>
+    <hr class="divider">
+    <div class="wrapper">
+        <div class="header">
+            <div class="header-navbar">
+                <a href="#" class="header_logo"><img src="1.png" alt="logo" style="border-radius: 20px;"></a>
+                <ul class="header_menu">
+                    <li class="header_menu-item"><a href="#" class="header_menu_link header_menu_link_active">Домой</a></li>
+                    <li class="header_menu-item"><a href="#" class="header_menu_link">Мои достижения в доте</a></li>
+                    <li class="header_menu-item">
+                        <a href="#" class="header_menu_link">Мой Максик</a>
+                        <ul class="header_submenu">
+                            <li class="header_menu-item"><a href="#" class="header_menu_link">Фотографии</a></li>
+                            <li class="header_menu-item"><a href="#" class="header_menu_link">Соцсети</a></li>
+                            <li class="header_menu-item"><a href="#" class="header_menu_link">Контакты</a></li>
+                            <li class="header_menu-item"><a href="#" class="header_menu_link">404</a></li>
+                        </ul>
+                    </li>
+                    <li class="header_menu-item"><a href="#" class="header_menu_link">Мои контакты</a></li>
+                </ul>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-light mem-bounce" data-tooltip="только для татарок">Войти</button>
+                <span class="header-actions_text">или</span>
+                <button class="btn btn-light mem-bounce" data-tooltip="потом в доте добавимся">Зарегистрироваться</button>
+            </div>
+        </div>
+
+        <div class="stage">
+            <div class="stage_content">
+                <h1 class="stage_title">Ищу малышечку от 12 лет<br>(по гайдам)</h1>
+                <p class="stage_text">Я красивый молодой мальчик дотер, со скулами как у томаса шелби и огромным членом <span style="font-size: 2rem;"></span></p>
+                <div class="stage_action">
+                    <a href="#" class="btn btn-dark" id="writeMeBtn">📩 Написать мне</a>
+                    <a href="#" class="link link-arrow">Оставить заявку (с MMR 12k+)</a>
+                </div>
+            </div>
+            <img src="2.png" alt="2">
+            <a href="#features" class="btn-bottom"><i class="fas fa-arrow-down"></i></a>
+        </div>
+
+        <div id="features" class="features">
+            <div class="infoblock">
+                <i class="fa-solid fa-bitcoin-sign"></i>
+                <h2 class="infoblock_title">Огромное состояние</h2>
+                <p class="infoblock_text">За столь короткую жизнь я накопил 4 тысячи рублей и межпозвоночную грыжу.</p>
+                <a href="#" class="link link-arrow infoblock_link">Узнать подробнее ➡️</a>
+            </div>
+            <div class="infoblock">
+                <i class="fa-solid fa-hand"></i>
+                <h2 class="infoblock_title">Высокий рост</h2>
+                <p class="infoblock_text">Мой рост около 9 метров, достану детское питание с верхней полки.</p>
+                <a href="#" class="link link-arrow infoblock_link">Узнать подробнее ➡️</a>
+            </div>
+            <div class="infoblock">
+                <i class="fa-solid fa-brain"></i>
+                <h2 class="infoblock_title">Гигантский скилл</h2>
+                <p class="infoblock_text">У меня 4 аккаунта по 17к MMR, меня звали в Team Spirit, но я не пошел.</p>
+                <a href="#" class="link link-arrow infoblock_link">Узнать подробнее ➡️</a>
+            </div>
+        </div>
+
+        <div class="article">
+            <div class="article_img">
+                <img src="3.png" alt="требования">
+            </div>
+            <div class="article_content">
+                <h2 class="article_title">Мои требования к тебе, если будешь мне писать</h2>
+                <p class="article_text">Ты должна быть татаркой, уметь говорить на 7 языках, хорошо играть в доту, смеяться над моими шутками, быть очень богатой, и желательно выглядеть хотя бы чуть красивее меня.</p>
+                <div class="article_action">
+                    <a href="#" class="btn btn-dark mem-bounce" id="sendToHellBtn">Послать нахуй</a>
+                    <a href="#" class="link link-arrow">Написать красавцу</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="article article_reverse">
+            <div class="article_img">
+                <img src="4.png" alt="семейная жизнь">
+            </div>
+            <div class="article_content">
+                <h2 class="article_title">Какой будет наша семейная жизнь</h2>
+                <p class="article_text">Первые две недели пишу стихи, потом отвечаю раз в сутки: «на катке». Променяю тебя на доту при первой возможности, чтобы хоуми не назвали каблуком. Совместный отдых — смотреть как я хуярю на течисе бомбоклак.</p>
+                <div class="article_action">
+                    <a href="#" class="btn btn-dark mem-bounce" id="familyRejectBtn">Послать нахуй</a>
+                    <a href="#" class="link link-arrow">Написать красавцу</a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin: 5rem 0 3rem;">
+            <p style="font-size: 1.4rem; opacity: 0.7;">если у тебя меньше 2 тысяч ммр - иди нахуй</p>
+        </div>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark');
+            themeToggle.innerHTML = '☀️';
+        } else {
+            themeToggle.innerHTML = '🌙';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            if (body.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '🌙';
+            }
+        });
+        
+        function showMemAlert(message, emoji = '🤡') {
+            const popup = document.createElement('div');
+            popup.innerText = `${emoji} ${message} ${emoji}`;
+            popup.style.position = 'fixed';
+            popup.style.bottom = '20px';
+            popup.style.left = '50%';
+            popup.style.transform = 'translateX(-50%)';
+            popup.style.backgroundColor = '#6852ed';
+            popup.style.color = 'white';
+            popup.style.padding = '12px 24px';
+            popup.style.borderRadius = '60px';
+            popup.style.fontSize = '1.6rem';
+            popup.style.fontWeight = 'bold';
+            popup.style.zIndex = '9999';
+            popup.style.boxShadow = '0 5px 20px rgba(0,0,0,0.3)';
+            popup.style.fontFamily = "'Poppins', sans-serif";
+            popup.style.animation = 'fadeUp 0.3s ease';
+            document.body.appendChild(popup);
+            setTimeout(() => {
+                popup.style.opacity = '0';
+                setTimeout(() => popup.remove(), 500);
+            }, 2500);
+        }
+        
+        const writeBtn = document.getElementById('writeMeBtn');
+        if (writeBtn) {
+            writeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showMemAlert('тг: @g0od_n1ght');
+            });
+        }
+        
+        const sendToHell = document.getElementById('sendToHellBtn');
+        if (sendToHell) {
+            sendToHell.addEventListener('click', (e) => {
+                e.preventDefault();
+                showMemAlert('сама иди нахуй');
+            });
+        }
+        
+        const familyReject = document.getElementById('familyRejectBtn');
+        if (familyReject) {
+            familyReject.addEventListener('click', (e) => {
+                e.preventDefault();
+                showMemAlert('сама иди нахуй');
+            });
+        }
+        
+        const allLinks = document.querySelectorAll('.link-arrow, .btn-light, .header_menu_link');
+        allLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.id === 'writeMeBtn' || link.id === 'sendToHellBtn' || link.id === 'familyRejectBtn') return;
+                if (link.classList.contains('btn-bottom')) return;
+                if (link.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    showMemAlert('тг: @g0od_n1ght');
+                }
+            });
+        });
+        
+        document.querySelectorAll('.btn-dark').forEach(btn => {
+            if(btn.id !== 'writeMeBtn' && btn.id !== 'sendToHellBtn' && btn.id !== 'familyRejectBtn') {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showMemAlert('🔥');
+                });
+            }
+        });
+        
+        const logo = document.querySelector('.header_logo img');
+        if(logo) {
+            logo.addEventListener('mouseenter', () => {
+                logo.style.filter = 'drop-shadow(0 0 6px #ba43fc)';
+            });
+            logo.addEventListener('mouseleave', () => {
+                logo.style.filter = 'none';
+            });
+        }
+
+        console.log('%c Альтушки, держитесь!', 'color: #ba43fc; font-size: 18px;');
+       
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        document.querySelectorAll('.infoblock, .article').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.4s ease';
+            observer.observe(el);
+        });
+     
+        const allBtns = document.querySelectorAll('.btn, .link');
+        allBtns.forEach(btn => {
+        });
+    </script>
+</body>
+</html>
