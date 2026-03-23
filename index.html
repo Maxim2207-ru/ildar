@@ -679,7 +679,7 @@
 
         <div class="stage">
             <div class="stage_content">
-                <h1 class="stage_title">Ищу малышечку от 12 лет<br>(по гайдам)</h1>
+                <h1 class="stage_title">Ищу малышечку от 12 лет</h1>
                 <p class="stage_text">Я красивый молодой мальчик дотер, со скулами как у томаса шелби и огромным членом <span style="font-size: 2rem;"></span></p>
                 <div class="stage_action">
                     <a href="#" class="btn btn-dark" id="writeMeBtn">📩 Написать мне</a>
@@ -765,7 +765,7 @@
             }
         });
         
-        function showMemAlert(message, emoji = '🤡') {
+        function showMemAlert(message, emoji = '') {
             const popup = document.createElement('div');
             popup.innerText = `${emoji} ${message} ${emoji}`;
             popup.style.position = 'fixed';
@@ -829,7 +829,7 @@
             if(btn.id !== 'writeMeBtn' && btn.id !== 'sendToHellBtn' && btn.id !== 'familyRejectBtn') {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    showMemAlert('🔥');
+                    showMemAlert('');
                 });
             }
         });
